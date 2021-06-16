@@ -1,5 +1,5 @@
 streamlit
 opencv-contrib-python-headless
-Pillow<8.0.1
-opencv-contrib-python<4.5.2.52
-numpy<1.19.4
+Pillow
+opencv-contrib-python
+numpy
