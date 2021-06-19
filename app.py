@@ -7,7 +7,7 @@ import PIL
 import numpy
 
 
-def detect(image,x_r,sh1,con1):
+def detect(image):
     '''
     Function to detect circles
     '''
@@ -44,13 +44,6 @@ def detect(image,x_r,sh1,con1):
         cv.circle(output, (x, y), r+5, (0, 0, 0), -1)
         #cv.circle(output, (x, y), 2, (0, 255, 255), 3)
     cv.imwrite('1.png',output)
-    
-    img=cv.imread('1.png')
-    img=cv.cvtColor(img,cv.COLOR_BGR2GRAY)
-    _,result=cv.threshold(img,100,255,cv.THRESH_BINARY)
-    adaptive=cv.adaptiveThreshold(img,x_r,cv.ADAPTIVE_THRESH_GAUSSIAN_C,cv.THRESH_BINARY,sh1,con1)
-    cv.imwrite('2.png',adaptive)
-    #os.startfile('2.png')
 
 
     
@@ -61,7 +54,7 @@ def detect(image,x_r,sh1,con1):
 
   
     
-    return adaptive
+    return output
     
     
 
@@ -100,16 +93,6 @@ def main():
 
         sh=st.slider('sharpness : ',value=1.0,min_value=1.0,max_value=4.0,step=0.1)
         st.write('sharpness ',sh)
-        
-        ############################
-        sh1=st.slider('parameter 1 : ',value=111,min_value=50,max_value=200,step=10)
-        con1=st.slider('parameter 2 : ',value=20,min_value=0,max_value=50,step=5)
-        
-
-        
-        
-
-        x_r=st.slider('Black and white : ',value=250,min_value=200,max_value=255,step=5)
 
 
         if image_file is not None:
@@ -132,7 +115,7 @@ def main():
                 
                 # result_img is the image with rectangle drawn on it (in case there are faces detected)
                 # result_faces is the array with co-ordinates of bounding box(es)
-                result_img = detect(image=image,x_r=x_r,sh1=sh1,con1=con1)
+                result_img = detect(image=image)
                 st.image(result_img, use_column_width = True)
 
     elif choice == "About":
