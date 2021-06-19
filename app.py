@@ -7,7 +7,7 @@ import PIL
 import numpy
 
 
-def detect(image):
+def detect(image,x_r,sh,con):
     '''
     Function to detect circles
     '''
@@ -49,12 +49,17 @@ def detect(image):
     
 
 
-    
+    img=cv.imread('1.png')
+    img=cv.cvtColor(img,cv.COLOR_BGR2GRAY)
+    _,result=cv.threshold(img,100,255,cv.THRESH_BINARY)
+    adaptive=cv.adaptiveThreshold(img,x_r,cv.ADAPTIVE_THRESH_GAUSSIAN_C,cv.THRESH_BINARY,sh,con)
+    cv.imwrite('2.png',adaptive)
+    #os.startfile('2.png')
 
 
   
     
-    return output
+    return adaptive
     
     
 
@@ -85,14 +90,21 @@ def main():
         min_rad=st.slider('mir radius : ',value=5)
         st.write('min radius ',min_rad)
 
-        br=st.slider('Brightness : ',value=1.4,min_value=1.0,max_value=4.0,step=0.1)
+        br=st.slider('Brightness : ',value=1.0,min_value=1.0,max_value=4.0,step=0.1)
         st.write('Brightness ',br)
 
-        con=st.slider('contrast : ',value=1.5,min_value=1.0,max_value=4.0,step=0.1)
-        st.write('contrast ',con)
 
-        sh=st.slider('sharpness : ',value=1.0,min_value=1.0,max_value=4.0,step=0.1)
-        st.write('sharpness ',sh)
+        sh=st.slider('parameter 1 : ',value=111,min_value=50,max_value=200,step=10)
+        con=st.slider('parameter 2 : ',value=20,min_value=0,max_value=50,step=5)
+        
+
+        
+        
+
+        x_r=st.slider('Black and white : ',value=250,min_value=200,max_value=255,step=5)
+        
+
+
 
 
         if image_file is not None:
@@ -102,10 +114,7 @@ def main():
             
             enhencer=ImageEnhance.Brightness(image)
             image=enhencer.enhance(br)
-            enhencer=ImageEnhance.Contrast(image)
-            image=enhencer.enhance(con)
-            enhencer=ImageEnhance.Sharpness(image)
-            image=enhencer.enhance(sh)
+            
 
             
 
@@ -115,7 +124,7 @@ def main():
                 
                 # result_img is the image with rectangle drawn on it (in case there are faces detected)
                 # result_faces is the array with co-ordinates of bounding box(es)
-                result_img = detect(image=image)
+                result_img = detect(image=image,x_r=x_r,sh=sh,con=con)
                 st.image(result_img, use_column_width = True)
 
     elif choice == "About":
