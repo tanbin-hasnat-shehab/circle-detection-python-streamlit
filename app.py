@@ -90,16 +90,16 @@ def main():
         min_rad=st.slider('mir radius : ',value=5)
         st.write('min radius ',min_rad)
 
-        br=st.slider('Brightness : ',value=1.4,min_value=1.0,max_value=4.0,step=0.1)
+        br=st.slider('Brightness : ',value=1.0,min_value=1.0,max_value=4.0,step=0.1)
         st.write('Brightness ',br)
 
-        con=st.slider('contrast : ',value=1.5,min_value=1.0,max_value=4.0,step=0.1)
+        con=st.slider('contrast : ',value=1.0,min_value=1.0,max_value=4.0,step=0.1)
         st.write('contrast ',con)
 
         sh=st.slider('sharpness : ',value=1.0,min_value=1.0,max_value=4.0,step=0.1)
         st.write('sharpness ',sh)
 
-        x_r=st.slider('Black and white : ',value=240,min_value=200,max_value=255,step=5)
+        x_r=st.slider('Black and white : ',value=250,min_value=200,max_value=255,step=5)
         st.write('B/W ',x_r)
 
 
