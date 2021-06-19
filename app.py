@@ -5,7 +5,10 @@ import numpy as np
 import os
 import PIL
 import numpy
-
+import sympy as sy
+import matplotlib.pyplot as plt 
+import pandas as pd
+from openpyxl import load_workbook 
 
 def detect(image):
     '''
