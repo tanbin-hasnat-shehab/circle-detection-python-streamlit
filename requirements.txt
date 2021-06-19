@@ -6,4 +6,4 @@ pandas
 openpyxl
 matplotlib
 sympy
-tkinter
+
