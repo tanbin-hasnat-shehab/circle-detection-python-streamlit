@@ -5,12 +5,9 @@ import numpy as np
 import os
 import PIL
 import numpy
-import sympy as sy
-import matplotlib.pyplot as plt 
-import pandas as pd
-from openpyxl import load_workbook 
 
-def detect(image):
+
+def detect(image,x_r):
     '''
     Function to detect circles
     '''
@@ -52,12 +49,17 @@ def detect(image):
     
 
 
-    
+    img=cv.imread('1.png')
+    img=cv.cvtColor(img,cv.COLOR_BGR2GRAY)
+    _,result=cv.threshold(img,100,255,cv.THRESH_BINARY)
+    adaptive=cv.adaptiveThreshold(img,x_r,cv.ADAPTIVE_THRESH_GAUSSIAN_C,cv.THRESH_BINARY,111,20)
+    cv.imwrite('2.png',adaptive)
+    #os.startfile('2.png')
 
 
   
     
-    return output
+    return adaptive
     
     
 
@@ -97,6 +99,9 @@ def main():
         sh=st.slider('sharpness : ',value=1.0,min_value=1.0,max_value=4.0,step=0.1)
         st.write('sharpness ',sh)
 
+        x_r=st.slider('Black and white : ',value=240,min_value=200,max_value=255,step=5)
+        st.write('B/W ',x_r)
+
 
         if image_file is not None:
 
@@ -118,7 +123,7 @@ def main():
                 
                 # result_img is the image with rectangle drawn on it (in case there are faces detected)
                 # result_faces is the array with co-ordinates of bounding box(es)
-                result_img = detect(image=image)
+                result_img = detect(image=image,x_r=x_r)
                 st.image(result_img, use_column_width = True)
 
     elif choice == "About":
