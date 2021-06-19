@@ -40,6 +40,7 @@ def detect(image,x_r,sh,con):
     circles = cv.HoughCircles(gray, cv.HOUGH_GRADIENT, 0.5, 1,
                                   param1=50, param2=30, minRadius=min_rad, maxRadius=20)
     detected_circles = np.uint16(np.around(circles))
+                                                
     for (x, y ,r) in detected_circles[0, :]:
         cv.circle(output, (x, y), r+5, (0, 0, 0), -1)
         #cv.circle(output, (x, y), 2, (0, 255, 255), 3)
@@ -49,17 +50,12 @@ def detect(image,x_r,sh,con):
     
 
 
-    img=cv.imread('1.png')
-    img=cv.cvtColor(img,cv.COLOR_BGR2GRAY)
-    _,result=cv.threshold(img,100,255,cv.THRESH_BINARY)
-    adaptive=cv.adaptiveThreshold(img,x_r,cv.ADAPTIVE_THRESH_GAUSSIAN_C,cv.THRESH_BINARY,sh,con)
-    cv.imwrite('2.png',adaptive)
-    #os.startfile('2.png')
+    
 
 
   
     
-    return adaptive
+    return output
     
     
 
@@ -120,6 +116,13 @@ def main():
 
 
             if st.button("Process"):
+                img=cv.imread(image)
+                img=cv.cvtColor(img,cv.COLOR_BGR2GRAY)
+                _,result=cv.threshold(img,100,255,cv.THRESH_BINARY)
+                adaptive=cv.adaptiveThreshold(img,x_r,cv.ADAPTIVE_THRESH_GAUSSIAN_C,cv.THRESH_BINARY,sh,con)
+                cv.imwrite('2.png',adaptive)
+                #os.startfile('2.png')
+                image = Image.open('2.png')
 
                 
                 # result_img is the image with rectangle drawn on it (in case there are faces detected)
