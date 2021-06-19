@@ -94,7 +94,7 @@ def main():
         st.write('Brightness ',br)
 
 
-        sh=st.slider('parameter 1 : ',value=111,min_value=50,max_value=200,step=1)
+        sh=st.slider('parameter 1 : ',value=111,min_value=51,max_value=201,step=2)
         con=st.slider('parameter 2 : ',value=20,min_value=0,max_value=50,step=5)
         
 
