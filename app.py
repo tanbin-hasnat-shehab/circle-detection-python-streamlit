@@ -124,7 +124,7 @@ def main():
                 
                 # result_img is the image with rectangle drawn on it (in case there are faces detected)
                 # result_faces is the array with co-ordinates of bounding box(es)
-                result_img = detect(image=image,x_r=x_r,sh,con)
+                result_img = detect(image=image,x_r=x_r,sh=sh,con=con)
                 st.image(result_img, use_column_width = True)
 
     elif choice == "About":
