@@ -110,7 +110,7 @@ def main():
         if image_file is not None:
 
             image = Image.open(image_file)
-            #image=image.resize((2000,3540),IMAGE.ANTIALIAS)
+            image=image.thumbnail((700,1239),IMAGE.ANTIALIAS)
 
 
             
