@@ -111,13 +111,7 @@ def main():
         if image_file is not None:
 
             image = Image.open(image_file)
-            basewidth = 300
-            img = image
-            wpercent = (basewidth/float(img.size[0]))
-            hsize = int((float(img.size[1])*float(wpercent)))
-            img = img.resize((basewidth,hsize), Image.ANTIALIAS)
-            img.save('resized.jpg')
-            image = Image.open('resized.jpg')
+            
 
 
             
