@@ -51,10 +51,10 @@ def detect(image,x_r,sh,con):
 
     img=cv.imread('1.png')
     img=cv.cvtColor(img,cv.COLOR_BGR2GRAY)
-    _,result=cv.threshold(img,100,255,cv.THRESH_BINARY)
+    #_,result=cv.threshold(img,100,255,cv.THRESH_BINARY)
     adaptive=cv.adaptiveThreshold(img,x_r,cv.ADAPTIVE_THRESH_GAUSSIAN_C,cv.THRESH_BINARY,sh,con)
     cv.imwrite('2.png',adaptive)
-    #os.startfile('2.png')
+    
 
 
   
