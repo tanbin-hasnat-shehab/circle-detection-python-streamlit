@@ -7,6 +7,7 @@ import PIL
 import numpy
 
 
+
 def detect(image,x_r,sh,con):
     '''
     Function to detect circles
@@ -110,7 +111,7 @@ def main():
         if image_file is not None:
 
             image = Image.open(image_file)
-            image=image.thumbnail((700,1239),IMAGE.ANTIALIAS)
+            image=image.thumbnail((700,1239),Image.ANTIALIAS)
 
 
             
