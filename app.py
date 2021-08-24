@@ -5,6 +5,7 @@ import numpy as np
 import os
 import PIL
 import numpy
+import easyocr
 
 
 
